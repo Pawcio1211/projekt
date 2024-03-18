@@ -7,46 +7,80 @@
     <title>Plant Identyty</title>
 
     <link rel="stylesheet" href="style.css">
+
     <link href="fontello-edeaafb1/css/fontello.css" rel="stylesheet" type="text/css" />
+    <link href="fontello-074ac2b2/css/fontello.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="https://unpkg.com/webcam-easy@1.1.1/dist/webcam-easy.min.js"></script>
 </head>
 
 <body>
     <div class="conteiner">
 
-        <div class="column">
-            <nav>
-                <div class="helper"></div>
-                <div class="helper"></div>
-                <div class="helper"></div>
-            </nav>
-        </div>
+        <nav class="column">
+            <div class="helper"></div>
+            <div class="helper"></div>
+            <div class="helper"></div>
+        </nav>
 
         <div class="column main">
 
             <main>
                 <div class="formulage center">
+                    <form action="" method="pos">
 
-                    <img src="_c92e0d97-1699-40da-b728-3824d43606ff.jpg" alt="logo">
-                    <div class="button">
-                        <p class="icon-camera"></p>
-                    </div>
-                    <div class="button">
-                        <p class="icon-picture"></p>
+                        <img src="_c92e0d97-1699-40da-b728-3824d43606ff.jpg" alt="logo">
+                        <div class="button" id="camera">
+                            <p class="icon-camera"></p>
+                        </div>
+                        <a style="display: none;" download></a>
+                        <div class="button">
+                            <label for="imageInput" class="custom-file-upload">
+                                <p class="icon-picture"></p>
+                            </label>
+                        </div>
+                        <input type="file" id="imageInput" accept="image/*">
+                        <button class="button" type="submit">
+                            <p class="icon-upload"></p>
+                        </button>
 
-                    </div>
+                    </form>
                 </div>
-                <div class="functional center">
 
+                <div class="functional center">
+                    <video id="webCam" autoplay playsinlne></video>
+                    <canvas id="canvas"></canvas>
+                    <!--
+                        
+                        <?php
+                    if (isset($_FILES['Image'])) {
+                        $file_name = $_FILES['Image']['name'];
+                        $file_size = $_FILES['Image']['size'];
+                        $file_tmp = $_FILES['Image']['tmp_name'];
+                        $file_type = $_FILES['Image']['type'];
+                        $file_error = $_FILES['Image']['error'];
+                        /*
+                        echo "Nazwa: " . $file_name . "<br>";
+                        echo "Rozmiar: " . $file_size . "bajtow<br>";
+                        echo "Nazwatymczasowa: " . $file_name . "<br>";
+                        echo "Typ pliku: " . $file_type . "<br>";
+                        echo "Tmp pliku: " . $file_tmp . "<br>";
+                        echo "Kod błędu: " . $file_error . "<br>";
+                        */
+
+                        $imgPatch = $_SERVER['DOCUMENT_ROOT'] . '/projekt/image';
+                        $docPatch = $_SERVER['DOCUMENT_ROOT'] . 'projekt';
+
+                        //move_uploaded_file($file_tmp, $patch . "/" . $file_name . ".png");
+                        move_uploaded_file($file_tmp, $imgPatch . "/1.png");
+                        echo '<img src=' . $imgPatch . '/1.png style="display: none;" id="Server_Img">';
+                    }
+                    ?>
+                -->
                 </div>
             </main>
 
-            <article>
-
-                <div class="info">
-                    <p>Tutaj znajdziesz opis co krok po kroku należy zrobić</p>
-                </div>
-
-            </article>
+            <img src="" style="display: none;">
 
         </div>
 
@@ -57,15 +91,18 @@
         </div>
     </div>
 
-    <footer>
-        <div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                <path fill="#cef0d5" fill-opacity="1"
-                    d="M0,96L30,96C60,96,120,96,180,101.3C240,107,300,117,360,117.3C420,117,480,107,540,117.3C600,128,660,160,720,149.3C780,139,840,85,900,74.7C960,64,1020,96,1080,112C1140,128,1200,128,1260,112C1320,96,1380,64,1410,48L1440,32L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z">
-                </path>
-            </svg>
+
+    <article>
+        <div class="info">
+            <p class="icon-camera"> - zrób zdjęcie (Pierwsze kliknięcie - włącza kamere | Drugie kliknięcie -
+                robi zdjęcie)</p>
+            <p class="icon-picture"> - dodaj zdjęcie</p>
+            <p class="icon-upload"> - analizuj zdjęcie</p>
         </div>
-    </footer>
+    </article>
+
+    <script type="text/javascript" src="script.js"></script>
+
 </body>
 
 </html>
